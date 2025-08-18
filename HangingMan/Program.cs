@@ -16,7 +16,8 @@
             
         //Define a List or Dictionary with words
         //Select randomly one of those
-        //Print the scree telling the user to guess one character
+        //Print the screen telling the user to guess one character
+        //check if the character was already given?
         //For each character in the word, check if that character equals with the one give by the user
         //if the character equals, then add this to a list with the positive found characters
         //if the character doesn't equal, then add a counter of tries ++1
@@ -26,9 +27,39 @@
         //ask the user to enter a new character
 
         //Define a List or Dictionary with words
-        List<string> listOfWords = new List<string>();
-        listOfWords = {"Hello"}
-
+        List<string> listOfWords = new List<string>() {"Hello", "Dog", "House", "Car" };
+        
+        //Select randomly one of those
+        Random random = new Random();
+        const int MIN_FOR_RANDOM_FUNCTION = 0;
+        int listLength = listOfWords.Count;
+        int indexWordToGuess = random.Next(MIN_FOR_RANDOM_FUNCTION, listLength);
+        string wordToGuess = listOfWords[indexWordToGuess];
+        Console.WriteLine(wordToGuess);
+        
+        //Print the screen telling the user to guess one character
+        Console.WriteLine("Hi there! You need to pick a character to figure out which word has been picked!");
+        Console.WriteLine("What Character should we check?");
+        
+        //store user's character
+        string userCharacterGuess;
+        userCharacterGuess = Console.ReadLine();
+        
+        //ADITONAL: make sure only one character is entered
+        //check if the character was already given?
+        List<char> guessedCharacter = new List<char>();
+        if (userCharacterGuess != null)
+        {
+            if (guessedCharacter.Contains(userCharacterGuess))
+                {
+                Console.WriteLine("That word is already picked!");
+                }
+            else
+            {
+                guessedCharacter.Add(userCharacterGuess);
+            }
+            
+        }
 
 
 
