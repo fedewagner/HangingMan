@@ -4,6 +4,10 @@
     {
         static void Main(string[] args)
         {
+            //const always at the top
+            const int MAX_TRIED_CHARACTERS = 5;
+            const int MIN_FOR_RANDOM_FUNCTION = 0;
+
             //Putting some art
             var HANGMANPICS = new List<string>
             {
@@ -73,7 +77,7 @@
                 "philosopher", "photography", "population", "possibility", "preparation",
                 "productivity", "professional", "psychology", "recognition", "relationship"
             };
-            
+
             //allowed alphabet
             var alphabetLower = new List<char>
             {
@@ -84,7 +88,6 @@
 
             //Select randomly one of those words
             Random random = new Random();
-            const int MIN_FOR_RANDOM_FUNCTION = 0;
             int listLength = listOfWords.Count;
             int indexWordToGuess = random.Next(MIN_FOR_RANDOM_FUNCTION, listLength);
             string wordToGuess = listOfWords[indexWordToGuess];
@@ -93,15 +96,14 @@
             Console.WriteLine(
                 "Hi there! You need to pick one character to figure out which word has been picked! (only one!)");
 
-            //Variables, constants and lists declaration
-            const int MAXTRIEDCHARACTERS = 5;
+            //Variables and lists declaration
 
             List<char> charactersToGuessList = new List<char>(wordToGuess);
             List<char> triedCharacters = new List<char>();
 
             int wrongtriedCharactersCount = 0;
             int countOfCharactersToGuess = charactersToGuessList.Distinct().Count();
-            int triesLeft = MAXTRIEDCHARACTERS;
+            int triesLeft = MAX_TRIED_CHARACTERS;
 
 
             //While Loop with triedCharactersCount for checking loosing and countOfCharactersToGuess for winning
@@ -199,7 +201,7 @@
             if (countOfCharactersToGuess == 0)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"You won 100$ guessing the word {wordToGuess}!");
+                Console.WriteLine($"You won 100$ guessing the word '{wordToGuess}'!");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             else
